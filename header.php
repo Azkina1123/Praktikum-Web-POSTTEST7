@@ -14,8 +14,16 @@
       </div>
 
       <div>
-        <span class="admin-logo img"></span>
-        <h3> Admin </h3>
+        <span class="<?= (isset($_SESSION["mode"])) ? $_SESSION["mode"] : "login" ?>-logo img"></span>
+        <h3> 
+          <?php
+            if (!isset($_SESSION["username"])) {
+              echo "<a href='login.php'> Login </a>";
+            } else {
+              echo $_SESSION["username"];
+            }
+          ?>
+        </h3>
       </div>
 
     </header>

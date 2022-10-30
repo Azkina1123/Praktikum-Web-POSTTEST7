@@ -298,7 +298,7 @@ function login_user() {
   }
   
   // jika password salah
-  if ($akun[0]["password"] != $password) {
+  if (password_verify($akun[0]["psw"], $password)) {
     echo "<script>
     alert('Password Anda salah!');
     </script>";
@@ -308,6 +308,59 @@ function login_user() {
   echo "<script>
         alert('Anda berhasil login!');
       </script>";
+  return true;
+}
+
+function register_user() {
+  global $con;
+
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+  $konfirmasi = $_POST["konfirmasi"];
+  $phone = $_POST["phone"];
+  $address = $_POST["address"];
+
+  // cek apakah username sudah digunakan
+  $akun = get_from_db("SELECT * FROM users WHERE username='$username'");
+
+  // jika akun sudah ada
+  if (count($akun) != 0) {
+    echo "<script>
+          alert('Username telah digunakan!');
+        </script>";
+    return false;
+  }
+
+  // jika password != konfirmasi
+  if ($password != $konfirmasi) {
+    echo "<script>
+            alert('Konfirmasi password salah!');
+          </script>";
+    return false;
+  }
+
+  // enkripsi password
+  $password = password_hash($password, PASSWORD_DEFAULT);
+
+  // tambahkan akun baru ke database
+  $result = mysqli_query(
+    $con, 
+    "INSERT INTO users
+     VALUES ('', '$username', '$password', '$phone', '$address')"
+  );
+
+  // jika gagal masuk ke database
+  if (!$result) {
+    echo "<script>
+      alert('Proses registrasi gagal!');
+    </script>";
+    return false;
+  }
+
+  // jika berhasil masuk ke database
+  echo "<script>
+          alert('Proses registrasi berhasil!');
+        </script>";
   return true;
 }
 

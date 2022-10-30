@@ -1,7 +1,15 @@
 <?php
+session_start();
 
 require "config.php";
 require "searching.php";
+
+if (!isset($_SESSION["mode"])) {
+  echo "<script>
+          alert('Please login as user or admin first!');
+          document.location.href = 'login.php?mode=User';
+        </script>";
+}
 
 if (!isset($_GET["mode"])) {
   $_GET["mode"] = "read";

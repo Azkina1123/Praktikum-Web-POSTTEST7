@@ -28,6 +28,7 @@
   --skin-logo: url("../img/moon-black.png");
   --menu-logo:url("../img/menu-black.png");
   --admin-logo: url("../img/admin-black.png");
+  --user-logo: url("../img/user-black.png");
   --search-logo:url("../img/search-black.png");
   --home-logo: url("../img/home-black.png");
   --about-us-logo: url("../img/about-us-black.png");
@@ -62,6 +63,7 @@
   --skin-logo: url("../img/moon-white.png");
   --menu-logo:url("../img/menu-white.png");
   --admin-logo: url("../img/admin-white.png");
+  --user-logo: url("../img/user-white.png");
   --search-logo:url("../img/search-white.png");
   --home-logo: url("../img/home-white.png");
   --about-us-logo: url("../img/about-us-white.png");
@@ -111,7 +113,7 @@ body {
   border: 1px solid #ced4da;
   background-color: var(--page-bg);
   color: var(--page-font);
-  height: 30px;
+  padding: 7px;
   width: 200px;
   font-family: 'Exo', sans-serif;
 }
@@ -126,6 +128,13 @@ button {
 button:hover {
   background-color: var(--button-hover-bg);
 }
+
+@media screen and (min-width: 240px) and (max-width:1024px) {
+  .form-input {
+    width: 150px;
+  }
+}
+
 /* ======================================================= */
 /*                       PAGE WRAPPER                      */
 /* ======================================================= */
@@ -218,7 +227,10 @@ header input[type = "search"] {
   margin: 0px 15px;
 }
 
-header .menu-logo, header .admin-logo {
+header .menu-logo,
+header .admin-logo,
+header .user-logo,
+header .login-logo {
   width: 32px;
   height: 32px;
 }
@@ -228,10 +240,19 @@ header .menu-logo {
 header .admin-logo {
   background-image: var(--admin-logo);
 }
-header .admin-logo + h3 {
+header .user-logo {
+  background-image: var(--user-logo);
+}
+header .login-logo {
+  background-image: var(--login-logo);
+  border-radius: 5px;
+}
+
+header h3{
   margin: 0px 10px;
   font-family: 'Exo', sans-serif;
 }
+
 
 footer {
   display: flex;
@@ -797,5 +818,22 @@ textarea.form-input {
   background-color: #d65b48;
 }
 
+/* ======================================================= */
+/*                  REGISTER & LOGIN PAGE                  */
+/* ======================================================= */
+
+.login .content {
+  text-align: center;
+  height: 400px;
+}
+
+.login .content > h1,
+.login .content > p {
+  margin: 10px;
+}
+
+.login .content a:hover {
+  color: var(--black)
+}
 
 
