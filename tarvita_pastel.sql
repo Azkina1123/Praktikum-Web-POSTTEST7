@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 03:45 PM
+-- Generation Time: Oct 30, 2022 at 03:32 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -60,6 +60,28 @@ INSERT INTO `products` (`id`, `released_date`, `name`, `price`, `description`, `
 ('tool-4', '2022-10-18 21:37:00', 'Plastic Pallete Painting', 59990, 'Brand new and high quality pallete. Suitable for all water based media.', 41, 0.5, 10.7, 10.7, '', '', 'Plastic', '1 Pcs pallete', 'tool-4-Plastic Pallete Painting.jfif'),
 ('tool-5', '2022-10-18 21:38:00', 'Craft Painting Tools Kits', 273000, 'The tools set is used for decorating and painting DIY model spraying.', 32, 4.4, 1.2, 13.4, '', '', 'Alluminium', '1 Set craft painting (10 pcs)', 'tool-5-Craft Painting Tools Kits.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `psw` varchar(255) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `address` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `psw`, `phone`, `address`) VALUES
+(1, 'User1', '$2y$10$TAtI39lDBKB6mNUgEG9d7eMUsGp46xKYVC0.u0GB2lwK9NUl2ICBG', '081250539358', 'Jl. KS Tubun Dalam'),
+(2, 'User2', '$2y$10$BPI23rvLKYQu0pgLe3gJJ.NmMZaZYWUIboPkyDmvVZOglsqrFa2Ym', '082115783345', 'Jl. Pahlawan');
+
 --
 -- Indexes for dumped tables
 --
@@ -69,6 +91,22 @@ INSERT INTO `products` (`id`, `released_date`, `name`, `price`, `description`, `
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
